@@ -1,3 +1,4 @@
+
 <template>
   <div id="gamePage">
     <a-row align="space-between">
@@ -139,6 +140,8 @@ const doBack = () => {
 onMounted(() => {
   doStart();
 });
+
+
 </script>
 
 <style scoped>
