@@ -31,7 +31,7 @@
           >
             <!-- {{ block.type }} -->
             <!-- {{"1"}} -->
-            <img :src="`./icons/${block.type}.png`" class="image">
+            <img :src="`/public/icons/${block.type}.png`" class="image">
             
             <!-- <img :src="'./icons/anqi.png'" class="image"> -->
             <!-- <v-img src="require(`../icons/CO2.png`)" alt=""
@@ -58,7 +58,7 @@
           @click="() => doClickBlock(randomBlock[0], index)"
         >
           <!-- {{ randomBlock[0].type }} -->
-          <img :src="`./icons/${randomBlock[0].type}.png`" class="image">
+          <img :src="`/public/icons/${randomBlock[0].type}.png`" class="image">
             
           <!-- {{"2"}} -->
           <!-- <img :src="`${randomBlock[0].type}`" class="image"> -->
@@ -71,7 +71,7 @@
         >
           <span v-if="canSeeRandom">
             <!-- {{ randomBlock[num].type }} -->
-            <img :src="`./icons/${randomBlock[num].type}.png`" class="image">
+            <img :src="`/public/icons/${randomBlock[num].type}.png`" class="image">
            
             <!-- {{"4"}} -->
             <!-- <img :src="`${randomBlock[num].type}`" class="image"> -->
@@ -83,7 +83,7 @@
     <a-row v-if="slotAreaVal.length > 0" align="center" class="slot-board">
       <div v-for="(slotBlock, index) in slotAreaVal" :key="index" class="block">
         <!-- {{ slotBlock?.type }} -->
-        <img :src="`./icons/${slotBlock?.type}.png`" class="image">
+        <img :src="`/public/icons/${slotBlock?.type}.png`" class="image">
            
         <!-- {{"3"}} -->
         <!-- <img :src="`${slotBlock?.type}`" class="image"> -->
