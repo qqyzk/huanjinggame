@@ -8,8 +8,7 @@
     <a-row align="center">
       <div v-if="gameStatus === 3" style="text-align: center">
         <h2>恭喜，你赢啦！🎉</h2>
-        <img alt="程序员鱼皮" src="../assets/kunkun.png" />
-        <my-ad style="margin-top: 16px" />
+        
       </div>
     </a-row>
     <!-- 分层选块 -->
@@ -28,9 +27,19 @@
               left: block.x * widthUnit + 'px',
               top: block.y * heightUnit + 'px',
             }"
-            @click="() => doClickBlock(block)"
+            @click="() => doClickBlock(block) "
           >
-            {{ block.type }}
+            <!-- {{ block.type }} -->
+            <!-- {{"1"}} -->
+            <img :src="`./icons/${block.type}.png`" class="image">
+            
+            <!-- <img :src="'./icons/anqi.png'" class="image"> -->
+            <!-- <v-img src="require(`../icons/CO2.png`)" alt=""
+                contain    
+                height="100px"
+                width="150px">
+            </v-img> -->
+            
           </div>
         </div>
       </div>
@@ -48,7 +57,11 @@
           class="block"
           @click="() => doClickBlock(randomBlock[0], index)"
         >
-          {{ randomBlock[0].type }}
+          <!-- {{ randomBlock[0].type }} -->
+          <img :src="`./icons/${randomBlock[0].type}.png`" class="image">
+            
+          <!-- {{"2"}} -->
+          <!-- <img :src="`${randomBlock[0].type}`" class="image"> -->
         </div>
         <!-- 隐藏 -->
         <div
@@ -57,7 +70,11 @@
           class="block disabled"
         >
           <span v-if="canSeeRandom">
-            {{ randomBlock[num].type }}
+            <!-- {{ randomBlock[num].type }} -->
+            <img :src="`./icons/${randomBlock[num].type}.png`" class="image">
+           
+            <!-- {{"4"}} -->
+            <!-- <img :src="`${randomBlock[num].type}`" class="image"> -->
           </span>
         </div>
       </div>
@@ -65,18 +82,18 @@
     <!-- 槽位 -->
     <a-row v-if="slotAreaVal.length > 0" align="center" class="slot-board">
       <div v-for="(slotBlock, index) in slotAreaVal" :key="index" class="block">
-        {{ slotBlock?.type }}
+        <!-- {{ slotBlock?.type }} -->
+        <img :src="`./icons/${slotBlock?.type}.png`" class="image">
+           
+        <!-- {{"3"}} -->
+        <!-- <img :src="`${slotBlock?.type}`" class="image"> -->
       </div>
     </a-row>
     <!-- 技能 -->
     <div class="skill-board">
       <a-space>
-        <a-button size="small" @click="doRevert">撤回</a-button>
-        <a-button size="small" @click="doRemove">移出</a-button>
-        <a-button size="small" @click="doShuffle">洗牌</a-button>
-        <a-button size="small" @click="doBroke">破坏</a-button>
-        <a-button size="small" @click="doHolyLight">圣光</a-button>
-        <a-button size="small" @click="doSeeRandom">透视</a-button>
+       
+        
       </a-space>
     </div>
   </div>
@@ -87,6 +104,7 @@ import useGame from "../core/game";
 import { onMounted } from "vue";
 import { useRouter } from "vue-router";
 import MyAd from "../components/MyAd.vue";
+import { icons } from "ant-design-vue/lib/image/PreviewGroup";
 
 const router = useRouter();
 
@@ -160,6 +178,14 @@ onMounted(() => {
   text-align: center;
   vertical-align: top;
   display: inline-block;
+}
+
+.image {
+  bottom: 2px;
+  width:38px;
+  height:38px;
+  vertical-align: center;
+ 
 }
 
 .disabled {

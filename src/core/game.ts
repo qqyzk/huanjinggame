@@ -79,7 +79,7 @@ const useGame = () => {
    * 游戏初始化
    */
   const initGame = () => {
-    console.log("initGame", gameConfig);
+   
 
     // 0. 设置父容器宽高
     const levelBoardDom: any = document.getElementsByClassName("level-board");
@@ -89,7 +89,7 @@ const useGame = () => {
     // 1. 规划块数
     // 块数单位（总块数必须是该值的倍数）
     const blockNumUnit = gameConfig.composeNum * gameConfig.typeNum;
-    console.log("块数单位", blockNumUnit);
+    
 
     // 随机生成的总块数
     const totalRandomBlockNum = gameConfig.randomBlocks.reduce(
@@ -98,12 +98,12 @@ const useGame = () => {
       },
       0
     );
-    console.log("随机生成的总块数", totalRandomBlockNum);
+    
 
     // 需要的最小块数
     const minBlockNum =
       gameConfig.levelNum * gameConfig.levelBlockNum + totalRandomBlockNum;
-    console.log("需要的最小块数", minBlockNum);
+  
 
     // 补齐到 blockNumUnit 的倍数
     // e.g. minBlockNum = 14, blockNumUnit = 6, 补到 18
@@ -112,7 +112,7 @@ const useGame = () => {
       totalBlockNum.value =
         (Math.floor(minBlockNum / blockNumUnit) + 1) * blockNumUnit;
     }
-    console.log("总块数", totalBlockNum.value);
+  
 
     // 2. 初始化块，随机生成块的内容
     // 保存所有块的数组
@@ -194,11 +194,11 @@ const useGame = () => {
         break;
       }
     }
-    console.log("最终剩余块数", leftBlockNum);
+    
 
     // 4. 初始化空插槽
     const slotArea: BlockType[] = new Array(gameConfig.slotNum).fill(null);
-    console.log("随机块情况", randomBlocks);
+  
 
     return {
       levelBlocks,
@@ -335,8 +335,7 @@ const useGame = () => {
         map[type]++;
       }
     });
-    console.log("tempSlotAreaVal", tempSlotAreaVal);
-    console.log("map", map);
+    
     // 得到新数组
     const newSlotAreaVal = new Array(gameConfig.slotNum).fill(null);
     tempSlotNum = 0;
@@ -373,6 +372,7 @@ const useGame = () => {
   const doStart = () => {
     gameStatus.value = 0;
     const { levelBlocks, randomBlocks, slotArea } = initGame();
+    console.log('InitGame End')
     console.log(levelBlocks, randomBlocks, slotArea);
     levelBlocksVal.value = levelBlocks;
     randomBlocksVal.value = randomBlocks;
@@ -419,7 +419,7 @@ const useGame = () => {
         typeBlockMap[block.type].forEach((clickBlock) => {
           doClickBlock(clickBlock, -1, true);
         });
-        console.log("doBroke", typeBlockMap[block.type]);
+       
         break;
       }
     }
